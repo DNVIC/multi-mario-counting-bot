@@ -153,7 +153,7 @@ namespace _602countingbot
                 //Console.WriteLine("Current Progress" + CurrentProgress);
                 //ircClient.SendPublicChatMessage(CurrentProgress);
 
-                await Task.Delay(1500); //1.5 second break between messages for performance reasons
+                await Task.Delay(10000); //10 second break between messages to not ban the global bot
             }
         }
         

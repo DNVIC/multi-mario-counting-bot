@@ -23,3 +23,6 @@ C:\Users\wdsis\source\repos\602countingbot\602countingbot\bin\Release\System.Thr
 C:\Users\wdsis\source\repos\602countingbot\602countingbot\bin\Release\System.ValueTuple.xml
 C:\Users\wdsis\source\repos\602countingbot\602countingbot\obj\Release\602countingbot.csprojAssemblyReference.cache
 C:\Users\wdsis\source\repos\602countingbot\602countingbot\obj\Release\602countingbot.csproj.CopyComplete
+G:\Desktop\build\602counting\602countingbot.exe.config
+G:\Desktop\build\602counting\602countingbot.exe
+G:\Desktop\build\602counting\602countingbot.pdb
