@@ -26,3 +26,12 @@ C:\Users\wdsis\source\repos\602countingbot\602countingbot\obj\Release\602countin
 G:\Desktop\build\602counting\602countingbot.exe.config
 G:\Desktop\build\602counting\602countingbot.exe
 G:\Desktop\build\602counting\602countingbot.pdb
+G:\Desktop\602counting\obj\Release\602countingbot.csproj.CoreCompileInputs.cache
+G:\Desktop\602counting\obj\Release\602countingbot.csproj.CopyComplete
+G:\Desktop\602counting\obj\Release\602countingbot.exe
+G:\Desktop\602counting\obj\Release\602countingbot.pdb
+G:\Desktop\build\602counting\602countingbot.exe.manifest
+G:\Desktop\build\602counting\602countingbot.application
+G:\Desktop\602counting\obj\Release\602countingbot.exe.manifest
+G:\Desktop\602counting\obj\Release\602countingbot.application
+G:\Desktop\602counting\obj\Release\602countingbot.csproj.AssemblyReference.cache

@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "PHJVPj3K7AfbzIRKu785pl3TVRMgS81TyRa6a+x0FIddGBgzzM2VODMVhplaGt1wwIZL1GFiDPZRxkeQR3tq9w==",
+  "success": true,
+  "projectFilePath": "G:\\Desktop\\602counting\\602countingbot.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\wdsis\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\8.0.0\\microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",
+    "C:\\Users\\wdsis\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\wdsis\\.nuget\\packages\\system.data.datasetextensions\\4.5.0\\system.data.datasetextensions.4.5.0.nupkg.sha512",
+    "C:\\Users\\wdsis\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\wdsis\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
+    "C:\\Users\\wdsis\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

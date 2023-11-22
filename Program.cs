@@ -15,19 +15,31 @@ namespace _602countingbot
         private static string _oauth;
         private static string _channel;
         private static string _username;
+        private static string _path;
+        private static string _index;
         private static IPAddress _ip;
 
         
         private static void assignStrings()
         {
             LoginCredentials loginCredentials = new LoginCredentials();
-
+            string CredentialsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"credentials.json");
             try
             {
-                loginCredentials = LoginCredentials.GetCredentials(@"C:\602counting\credentials.json");
+                loginCredentials = LoginCredentials.GetCredentials(CredentialsPath);
             } 
             catch
             {
+                var dlg = new FolderPicker();
+                dlg.Title = "Select your split index folder";
+                dlg.InputPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                if (dlg.ShowDialog(IntPtr.Zero) == true)
+                {
+                    loginCredentials.path = dlg.ResultPath;
+                }
+                
+                    
+
                 Console.Write("Insert bot username ");
                 loginCredentials.user = Console.ReadLine();
 
@@ -43,7 +55,7 @@ namespace _602countingbot
                 Console.Write("Insert IP from LiveSplit Server ");
                 loginCredentials.ip = Console.ReadLine();
 
-                LoginCredentials.SaveCredentials(loginCredentials, @"C:\602counting\credentials.json");
+                LoginCredentials.SaveCredentials(loginCredentials, CredentialsPath);
             }
 
             
@@ -54,11 +66,35 @@ namespace _602countingbot
             _oauth = loginCredentials.oauth;
             _channel = loginCredentials.channel;
             _username = loginCredentials.username;
+            _path = loginCredentials.path;
         }
 
         static async Task Main(string[] args)
         {
             assignStrings();
+            string[] files = Directory.GetFiles(_path);
+            string[] textFiles = Array.FindAll(files, c => c.EndsWith(".txt"));
+            while(true)
+            {
+                for(var i = 0; i < textFiles.Length; i++)
+                {
+                    Console.WriteLine(i + 1 + ": " + textFiles[i]);
+                }
+                Console.Write("Select an index file to be used: ");
+                try
+                {
+                    var input = Int32.Parse(Console.ReadLine()) - 1;
+                    Console.WriteLine(textFiles[input] + " was selected");
+                    _index = textFiles[input];
+                    break;
+                } 
+                catch
+                {
+                    Console.WriteLine("Invalid input. Please try again.");
+                }
+            }
+            Console.WriteLine("Make sure to start your livesplit server before hitting enter here.");
+            Console.ReadLine();
             await ExecuteClient();
         }
         static async Task ExecuteClient()
@@ -86,8 +122,6 @@ namespace _602countingbot
                     
 
                     await SplitLevelChecker(sender, ByteBuffer);
-                    //sender.Shutdown(SocketShutdown.Both);
-                    //sender.Close();
                 }
                 catch (ArgumentNullException ane)
                 {
@@ -118,9 +152,16 @@ namespace _602countingbot
 
         private static async Task SplitLevelChecker(Socket sender, byte[] ByteBuffer )
         {
-            Console.Write("Press enter when the 602 race starts (press enter in opening of sm64)"); //Livesplit server acts weird when started and livesplit is not already running
-            Console.ReadLine();
-            //string CurrentProgress = "";
+            Console.WriteLine("The bot will automatically start when you start your splits.");
+            while (true)
+            {
+                string ReceivedCommand = SendAndReceiveCommand(sender, "getcurrenttimerphase", ByteBuffer);
+                if (ReceivedCommand.StartsWith("Running")) {
+                    Console.WriteLine("Bot is starting now!");
+                    break;
+                }
+                await Task.Delay(1500);
+            }
             IrcClient ircClient = new IrcClient("irc.chat.twitch.tv", 6667, _user, _oauth, _channel); // Sets up the connection with the twitch chat
 
             PingSender ping = new PingSender(ircClient); // Sends a ping every 5 minutes; otherwise twitch will kick the bot
@@ -128,32 +169,26 @@ namespace _602countingbot
             int StarCount = 0; //star count is created outside of the while loops so that it is an external variable
 
             int PreviousStarCount = 0; //used to calculate when the star count changes
-            string[] index = File.ReadAllLines(@"C:\602counting\index.txt");
+            string[] index = File.ReadAllLines(_index);
             while (true)
             {
 
 
                 string ReceivedCommand = SendAndReceiveCommand(sender, "getsplitindex", ByteBuffer); // Gets the current split from livesplit
-                string SplitID = index[int.Parse(ReceivedCommand)]; 
-                //Console.WriteLine(int.Parse(SplitID)); debug statements to find out what went wrong
-                //Console.WriteLine(int.Parse(ReceivedCommand));
-                //Console.WriteLine(SplitID);
+                string SplitID = index[int.Parse(ReceivedCommand)];
 
 
                 StarCount = int.Parse(SplitID);
-                Console.WriteLine("Current Star Count " + StarCount);
                 if (StarCount != PreviousStarCount)
                 {
+                    Console.WriteLine("Current Star Count " + StarCount + " ");
+                    Console.WriteLine("Timestamp: "+ DateTime.Now.ToString("HH:mm:ss"));
                     ircClient.SendPublicChatMessage("!set " + _username + " " + (StarCount).ToString());
+                    await Task.Delay(10000); //10 second buffer between chat messages
                 }
-                PreviousStarCount = StarCount;
+                PreviousStarCount = StarCount;                
 
-                
-
-                //Console.WriteLine("Current Progress" + CurrentProgress);
-                //ircClient.SendPublicChatMessage(CurrentProgress);
-
-                await Task.Delay(10000); //10 second break between messages to not ban the global bot
+                await Task.Delay(1500); //1.5 second delay between update checks
             }
         }
         

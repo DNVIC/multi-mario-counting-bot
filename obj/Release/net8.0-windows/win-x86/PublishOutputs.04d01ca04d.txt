@@ -1,0 +1,8 @@
+G:\Desktop\602published\602countingbot.pdb
+G:\Desktop\602published\602countingbot.dll.config
+G:\Desktop\602published\D3DCompiler_47_cor3.dll
+G:\Desktop\602published\PenImc_cor3.dll
+G:\Desktop\602published\PresentationNative_cor3.dll
+G:\Desktop\602published\vcruntime140_cor3.dll
+G:\Desktop\602published\wpfgfx_cor3.dll
+G:\Desktop\602published\602countingbot.exe
