@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "c+rypzjUG0c3twLxxwwMFspbUrRXgHjrLMORwJ5W3WnCEyllvaLbV/CtCs6IrwYaQtbdctEK/NyejYbeXsWxdQ==",
+  "dgSpecHash": "lv9IZ4DG8xuj/ml1l/9Eyn7drplXrI6nEsdE1dSg/0S5gwhGunMFLraeRiWcWNJlnBLHGJeWI+FxMo/IPfQrPg==",
   "success": true,
   "projectFilePath": "G:\\Desktop\\602counting\\602countingbot.csproj",
   "expectedPackageFiles": [
@@ -10,10 +10,7 @@
     "C:\\Users\\wdsis\\.nuget\\packages\\system.data.datasetextensions\\4.5.0\\system.data.datasetextensions.4.5.0.nupkg.sha512",
     "C:\\Users\\wdsis\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\wdsis\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
-    "C:\\Users\\wdsis\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512",
-    "C:\\Users\\wdsis\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\8.0.0\\microsoft.netcore.app.runtime.win-x86.8.0.0.nupkg.sha512",
-    "C:\\Users\\wdsis\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\8.0.0\\microsoft.windowsdesktop.app.runtime.win-x86.8.0.0.nupkg.sha512",
-    "C:\\Users\\wdsis\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\8.0.0\\microsoft.aspnetcore.app.runtime.win-x86.8.0.0.nupkg.sha512"
+    "C:\\Users\\wdsis\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }

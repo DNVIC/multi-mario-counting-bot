@@ -40,19 +40,19 @@ namespace _602countingbot
                 
                     
 
-                Console.Write("Insert bot username ");
+                Console.Write("Insert bot username: ");
                 loginCredentials.user = Console.ReadLine();
 
-                Console.Write("Insert bot oauth ID ");
+                Console.Write("Insert bot oauth ID: ");
                 loginCredentials.oauth = Console.ReadLine();
 
-                Console.Write("Insert channel to autocount in ");
+                Console.Write("Insert twitch channel for the bot to autocount in: ");
                 loginCredentials.channel = Console.ReadLine();
 
-                Console.Write("Insert your twitch username ");
+                Console.Write("Insert the twitch username for the account you're counting for: ");
                 loginCredentials.username = Console.ReadLine();
 
-                Console.Write("Insert IP from LiveSplit Server ");
+                Console.Write("Insert IP from LiveSplit Server: ");
                 loginCredentials.ip = Console.ReadLine();
 
                 LoginCredentials.SaveCredentials(loginCredentials, CredentialsPath);
@@ -76,6 +76,12 @@ namespace _602countingbot
             string[] textFiles = Array.FindAll(files, c => c.EndsWith(".txt"));
             while(true)
             {
+                if(textFiles.Length == 1)
+                {
+                    Console.WriteLine(textFiles[0] + " was selected");
+                    _index = textFiles[0];
+                    break;
+                }
                 for(var i = 0; i < textFiles.Length; i++)
                 {
                     Console.WriteLine(i + 1 + ": " + textFiles[i]);
@@ -99,46 +105,68 @@ namespace _602countingbot
         }
         static async Task ExecuteClient()
         {
-            // Base socket code taken from https://geeksforgeeks.org/socket-programming-in-c-sharp/
-            try
+            while(true)
             {
-                IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());
-                IPAddress ipaddr = _ip;
-                IPEndPoint localEndPoint = new IPEndPoint(ipaddr, 16834);
-                Console.WriteLine(ipaddr.ToString());
-                Socket sender = new Socket(ipaddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-
+                // Base socket code taken from https://geeksforgeeks.org/socket-programming-in-c-sharp/
                 try
                 {
-                    //Connect socket to endpoint
-                    sender.Connect(localEndPoint);
-                    byte[] ByteBuffer = new byte[1024];
+                    IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());
+                    IPAddress ipaddr = _ip;
+                    IPEndPoint localEndPoint = new IPEndPoint(ipaddr, 16834);
+                    Console.WriteLine(ipaddr.ToString());
+                    Socket sender = new Socket(ipaddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+
+                    try
+                    {
+                        //Connect socket to endpoint
+                        sender.Connect(localEndPoint);
+                        byte[] ByteBuffer = new byte[1024];
 
 
 
-                    //Print information that means we are good
-                    Console.WriteLine("Socket connected to -> {0} ", sender.RemoteEndPoint.ToString());
+                        //Print information that means we are good
+                        Console.WriteLine("Socket connected to -> {0} ", sender.RemoteEndPoint.ToString());
 
-                    
 
-                    await SplitLevelChecker(sender, ByteBuffer);
-                }
-                catch (ArgumentNullException ane)
-                {
-                    Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
-                }
-                catch (SocketException se)
-                {
-                    Console.WriteLine("SocketException : {0}", se.ToString());
+
+                        await SplitLevelChecker(sender, ByteBuffer);
+                    }
+                    catch (ArgumentNullException ane)
+                    {
+                        Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
+                        Console.WriteLine("Press enter to exit the program: ");
+                        Console.ReadLine();
+                        break;
+                    }
+                    catch (SocketException se)
+                    {
+                        if(se.ErrorCode == 10053)
+                        {
+                            Console.WriteLine("It appears the livesplit server has stopped; please start it again.");
+                            Console.WriteLine("Press enter once you have started it: ");
+                            Console.ReadLine();
+                            continue;
+                        }
+                        Console.WriteLine("SocketException : {0}", se.ToString());
+                        Console.WriteLine("Press enter to exit the program:");
+                        Console.ReadLine();
+                        break;
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Unexpected Exception : {0}", e.ToString());
+                        Console.WriteLine("Press enter to exit the program: ");
+                        Console.ReadLine();
+                        break;
+                    }
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Unexpected Exception : {0}", e.ToString());
+                    Console.WriteLine(e.ToString());
+                    Console.WriteLine("Press Enter to exit the program: ");
+                    Console.ReadLine();
+                    break;
                 }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
             }
         }
         static string SendAndReceiveCommand(Socket s, string Command, byte[] Buffer)

@@ -53,13 +53,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="602countingbot.dll" size="19968">
+  <file name="602countingbot.dll" size="21504">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>dg0+k59fh2feiW/W2CLBc2pN4c6iCfxqdjGDjnbjoHk=</dsig:DigestValue>
+      <dsig:DigestValue>xo4Gh8nR/tN8iHZ6J+04KpRTp2Z8Q7K+NHqK0kHtS5Q=</dsig:DigestValue>
     </hash>
   </file>
   <file name="602countingbot.dll.config" size="1301">
