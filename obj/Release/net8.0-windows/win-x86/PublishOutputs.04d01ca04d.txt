@@ -1,3 +1,0 @@
-G:\Desktop\602published\602countingbot.pdb
-G:\Desktop\602published\602countingbot.dll.config
-G:\Desktop\602published\602countingbot.exe

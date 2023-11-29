@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "restore": {
+    "G:\\Desktop\\602counting\\multi-mario-counting-bot.csproj": {}
+  },
+  "projects": {
+    "G:\\Desktop\\602counting\\multi-mario-counting-bot.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\Desktop\\602counting\\multi-mario-counting-bot.csproj",
+        "projectName": "multi_mario_counting_bot",
+        "projectPath": "G:\\Desktop\\602counting\\multi-mario-counting-bot.csproj",
+        "packagesPath": "C:\\Users\\wdsis\\.nuget\\packages\\",
+        "outputPath": "G:\\Desktop\\602counting\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "G:\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "G:\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "G:\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "ILMerge": {
+              "target": "Package",
+              "version": "[3.0.29, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-arm64": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

@@ -1,15 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "PHJVPj3K7AfbzIRKu785pl3TVRMgS81TyRa6a+x0FIddGBgzzM2VODMVhplaGt1wwIZL1GFiDPZRxkeQR3tq9w==",
+  "dgSpecHash": "pxOPhf1/B5NR3DablMOW7kMz3Zz/1cS+6BUnWWBmMb5vZT1s5Rxm9WQxypB1pZpZYZkdDTY1GptHFhQqdNQXcg==",
   "success": true,
-  "projectFilePath": "G:\\Desktop\\602counting\\602countingbot.csproj",
+  "projectFilePath": "G:\\Desktop\\602counting\\multi-mario-counting-bot.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\wdsis\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\8.0.0\\microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",
-    "C:\\Users\\wdsis\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
-    "C:\\Users\\wdsis\\.nuget\\packages\\system.data.datasetextensions\\4.5.0\\system.data.datasetextensions.4.5.0.nupkg.sha512",
-    "C:\\Users\\wdsis\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
-    "C:\\Users\\wdsis\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
-    "C:\\Users\\wdsis\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512"
+    "C:\\Users\\wdsis\\.nuget\\packages\\ilmerge\\3.0.29\\ilmerge.3.0.29.nupkg.sha512"
   ],
   "logs": []
 }
