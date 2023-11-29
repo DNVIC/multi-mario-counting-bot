@@ -4,6 +4,7 @@ A bot for automatically counting in the 602
 
 Dependencies:
 System.Text.Json
+.NET 8.0
 
 Go here for instructions: https://docs.google.com/document/d/1MliU_SbfYVzUxxQCfPs8Y6U7EXQClxxSfy_-mN0oDRE/edit?usp=sharing
 
