@@ -17,6 +17,7 @@ namespace _602countingbot
         private static string _username;
         private static string _path;
         private static string _index;
+        private static string _botset;
         private static IPAddress _ip;
 
         
@@ -72,17 +73,18 @@ namespace _602countingbot
         static async Task Main(string[] args)
         {
             assignStrings();
+            Console.Clear();
             string[] files = Directory.GetFiles(_path);
             string[] textFiles = Array.FindAll(files, c => c.EndsWith(".txt"));
-            while(true)
+            while (true)
             {
-                if(textFiles.Length == 1)
+                if (textFiles.Length == 1)
                 {
                     Console.WriteLine(textFiles[0] + " was selected");
                     _index = textFiles[0];
                     break;
                 }
-                for(var i = 0; i < textFiles.Length; i++)
+                for (var i = 0; i < textFiles.Length; i++)
                 {
                     Console.WriteLine(i + 1 + ": " + textFiles[i]);
                 }
@@ -93,14 +95,35 @@ namespace _602countingbot
                     Console.WriteLine(textFiles[input] + " was selected");
                     _index = textFiles[input];
                     break;
-                } 
+                }
                 catch
                 {
+                    Console.Clear();
                     Console.WriteLine("Invalid input. Please try again.");
                 }
             }
+            while (true) 
+            {
+                Console.WriteLine("Do you want the race bot to confirm your count after each message? (Y/n)");
+                string input = Console.ReadLine().ToUpper();
+                if (input == "N")
+                {
+                    _botset = "!botset ";
+                    break;
+                } else if (input == "Y" || string.IsNullOrEmpty(input))
+                {
+                    _botset = "!set ";
+                    break;
+                } else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Invalid Input");
+                }
+            }
+            Console.Clear();
             Console.WriteLine("Make sure to start your livesplit server before hitting enter here.");
             Console.ReadLine();
+            Console.Clear();
             await ExecuteClient();
         }
         static async Task ExecuteClient()
@@ -211,7 +234,7 @@ namespace _602countingbot
                 {
                     Console.WriteLine("Current Star Count " + StarCount + " ");
                     Console.WriteLine("Timestamp: "+ DateTime.Now.ToString("HH:mm:ss"));
-                    ircClient.SendPublicChatMessage("!set " + _username + " " + (StarCount).ToString());
+                    ircClient.SendPublicChatMessage(_botset + _username + " " + (StarCount).ToString());
                     await Task.Delay(10000); //10 second buffer between chat messages
                 }
                 PreviousStarCount = StarCount;                
